@@ -3,7 +3,7 @@
 -- Editted by Khurram Virani (@viranik) @lighthouse_labs
 
 CREATE TABLE "books" (
-	"id" integer NOT NULL,
+	"id" SERIAL NOT NULL,
 	"title" text NOT NULL,
 	"author_id" integer,
 	"subject_id" integer,
@@ -30,7 +30,7 @@ CREATE TABLE "publishers" (
 --
 
 CREATE TABLE "authors" (
-	"id" integer NOT NULL,
+	"id" SERIAL NOT NULL,
 	"last_name" text,
 	"first_name" text,
 	Constraint "authors_pkey" Primary Key ("id")
@@ -78,7 +78,7 @@ CREATE TABLE "shipments" (
 --
 
 CREATE TABLE "customers" (
-	"id" integer NOT NULL,
+	"id" SERIAL NOT NULL,
 	"last_name" text,
 	"first_name" text,
 	Constraint "customers_pkey" Primary Key ("id")
@@ -107,7 +107,7 @@ CREATE SEQUENCE "shipments_ship_id_seq" start 0 increment 1 maxvalue 2147483647 
 --
 
 CREATE TABLE "employees" (
-	"id" integer NOT NULL,
+	"id" SERIAL NOT NULL,
 	"last_name" text NOT NULL,
 	"first_name" text,
 	CONSTRAINT "employees_id" CHECK ((id > 100)),
