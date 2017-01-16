@@ -1,10 +1,13 @@
+package jdbc;
+
 import dto.Customer;
 import org.junit.Before;
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.*;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CustomerDaoTest {
 

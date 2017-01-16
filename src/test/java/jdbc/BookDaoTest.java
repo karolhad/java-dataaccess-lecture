@@ -1,4 +1,7 @@
+package jdbc;
+
 import dto.Book;
+import jdbc.BookDao;
 import org.junit.Test;
 
 import java.sql.SQLException;

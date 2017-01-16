@@ -1,3 +1,5 @@
+package jdbc;
+
 import dto.Customer;
 
 import java.sql.*;
