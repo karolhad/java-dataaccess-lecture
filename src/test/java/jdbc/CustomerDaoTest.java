@@ -24,7 +24,7 @@ public class CustomerDaoTest {
 
         print(customers);
 
-        assertThat(customers).hasSize(31);
+        assertThat(customers).hasSize(5);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class CustomerDaoTest {
 
         print(customers);
 
-        assertThat(customers).hasSize(2);
+        assertThat(customers).hasSize(1);
     }
 
     @Test

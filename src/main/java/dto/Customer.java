@@ -1,12 +1,26 @@
 package dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity()
+@Table(name = "customers")
 public class Customer {
 
+    @Id
     private Integer id;
 
+    @Column(name = "first_name")
     private String firstName;
-
+    @Column(name = "last_name")
     private String lastName;
+
+
+    private Customer() {
+
+    }
 
     public Customer(Integer id, String firstName, String lastName) {
         this.id = id;

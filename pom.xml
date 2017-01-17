@@ -36,7 +36,17 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901.jdbc4</version>
         </dependency>
-        <dependency>
+       <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>5.2.5.Final</version>
+       </dependency>
+       <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>RELEASE</version>
+       </dependency>
+       <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
