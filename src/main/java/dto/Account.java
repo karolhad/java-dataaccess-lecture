@@ -1,13 +1,22 @@
-package jdbc;
+package dto;
 
-import dto.Customer;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "accounts")
 public class Account {
+   @Id
    private Integer id;
 
+   @Column
    private String name;
 
+   @ManyToOne
    private Customer customer;
+
+   protected Account() {
+   }
 
    public Account(Integer id, String name, Customer customer) {
       this.id = id;
@@ -27,12 +36,4 @@ public class Account {
       return customer;
    }
 
-   @Override
-   public String toString() {
-      return "Account{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", customer=" + customer +
-            '}';
-   }
 }

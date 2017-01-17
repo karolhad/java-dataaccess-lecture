@@ -1,7 +1,10 @@
 package jdbc;
 
 
+import dto.Account;
 import dto.Customer;
+import dto.Deal;
+import dto.Instrument;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -11,7 +14,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class DealDao {
+class DealDao {
 
    List<Deal> find(String instrumentName, String customerLastName, String accountName) throws SQLException {
 

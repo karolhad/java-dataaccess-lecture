@@ -1,7 +1,7 @@
-package jdbc;
+package jpa;
 
-import dto.Account;
 import dto.Customer;
+import dto.Account;
 import dto.Deal;
 import org.junit.Test;
 
@@ -12,6 +12,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class DealDaoTest {
+
+
+   @Test
+   public void get_deal() {
+      DealDao dealDao = new DealDao();
+      final Deal deal = dealDao.get(10001);
+
+      assertThat(deal).isNotNull();
+   }
 
    @Test
    public void all_deals() throws SQLException {
@@ -24,9 +33,11 @@ public class DealDaoTest {
    @Test
    public void williams_deals() throws SQLException {
       DealDao dealDao = new DealDao();
-      final List<Deal> deals = dealDao.find(null, "Williams", null);
+      final List<Deal> deals = dealDao.find("Williams");
 
       assertThat(deals).hasSize(3);
+
+
 
       assertThat(deals.stream().
             map(Deal::getAccount).

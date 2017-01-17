@@ -1,22 +1,44 @@
-package jdbc;
+package dto;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "deals")
+
 public class Deal {
+   @Id
    private Integer id;
 
+   @ManyToOne()
+   @JoinColumn(name = "account_id", insertable = false, updatable = false)
+   @Fetch(FetchMode.JOIN)
    private Account account;
 
+   @ManyToOne()
+   @JoinColumn(name = "instrument_id", insertable = false, updatable = false)
+   @Fetch(FetchMode.JOIN)
    private Instrument instrument;
 
+   @Column(name = "open_timestamp")
    private Timestamp openTimestamp;
 
+   @Column(name = "close_timestamp")
    private Timestamp closeTimestamp;
 
+   @Column(name = "open_price")
    private BigDecimal openPrice;
 
+   @Column(name = "close_price")
    private BigDecimal closePrice;
+
+   private Deal() {
+   }
+
 
    public Deal(Integer id, Account account, Instrument instrument, Timestamp openTimestamp, Timestamp closeTimestamp, BigDecimal openPrice, BigDecimal closePrice) {
       this.id = id;
@@ -56,16 +78,4 @@ public class Deal {
       return closePrice;
    }
 
-   @Override
-   public String toString() {
-      return "Deal{" +
-            "id=" + id +
-            ", account=" + account +
-            ", instrument=" + instrument +
-            ", openTimestamp=" + openTimestamp +
-            ", closeTimestamp=" + closeTimestamp +
-            ", openPrice=" + openPrice +
-            ", closePrice=" + closePrice +
-            '}';
-   }
 }
