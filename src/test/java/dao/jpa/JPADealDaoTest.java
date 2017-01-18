@@ -11,12 +11,12 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class DealDaoTest {
+public class JPADealDaoTest {
 
 
    @Test
    public void get_deal() {
-      DealDao dealDao = new DealDao();
+      JPADealDao dealDao = new JPADealDao();
       final Deal deal = dealDao.get(10001);
 
       assertThat(deal).isNotNull();
@@ -24,7 +24,7 @@ public class DealDaoTest {
 
    @Test
    public void all_deals() throws SQLException {
-      DealDao dealDao = new DealDao();
+      JPADealDao dealDao = new JPADealDao();
       final List<Deal> deals = dealDao.find(null, null, null);
 
       assertThat(deals).hasSize(17);
@@ -32,7 +32,7 @@ public class DealDaoTest {
 
    @Test
    public void williams_deals() throws SQLException {
-      DealDao dealDao = new DealDao();
+      JPADealDao dealDao = new JPADealDao();
       final List<Deal> deals = dealDao.find("Williams");
 
       assertThat(deals).hasSize(3);
@@ -48,7 +48,7 @@ public class DealDaoTest {
 
    @Test
    public void complexSearch() throws SQLException {
-      DealDao dealDao = new DealDao();
+      JPADealDao dealDao = new JPADealDao();
       final List<Deal> deals = dealDao.find("USD/EUR", "King", "CFD");
 
       assertThat(deals).hasSize(1);

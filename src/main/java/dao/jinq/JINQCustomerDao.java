@@ -16,6 +16,7 @@ public class JINQCustomerDao implements CustomerDao {
 
    private final JinqJPAStreamProvider streams;
    private final EntityManager em;
+   private String sth;
 
    public JINQCustomerDao() {
       em = EntityManagerProvider.getEntityManager();
@@ -38,7 +39,14 @@ public class JINQCustomerDao implements CustomerDao {
 
    @Override
    public List<Customer> findByFirstName(String firstName) {
-      return streamCustomer().where(c -> firstName.equals(c.getFirstName())).collect(toList());
+
+
+      return streamCustomer().where(c -> {
+//         for (int i=0;i<10;i++) {
+//            System.out.println("Test");
+//         }
+//         sth = "";
+         return firstName.equals(c.getFirstName());}).joinFetchList(Customer::getAccounts).collect(toList());
    }
 
    @Override

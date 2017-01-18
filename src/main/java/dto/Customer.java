@@ -19,8 +19,7 @@ public class Customer {
    @Column(name = "last_name")
    private String lastName;
 
-   @OneToMany(fetch = FetchType.EAGER)
-   @Fetch(FetchMode.JOIN)
+   @OneToMany()
    @JoinColumn(name = "customer_id")
    private List<Account> accounts;
 

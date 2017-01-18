@@ -13,7 +13,7 @@ import java.util.List;
 
 import static dao.jpa.EntityManagerProvider.getEntityManager;
 
-class DealDao {
+class JPADealDao {
 
    Deal get(int id) {
       return getEntityManager().find(Deal.class, id);
