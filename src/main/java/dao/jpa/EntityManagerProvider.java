@@ -1,10 +1,10 @@
-package jpa;
+package dao.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-class EntityManagerProvider {
+public class EntityManagerProvider {
 
    private static EntityManager entityManager;
 
@@ -13,7 +13,7 @@ class EntityManagerProvider {
       entityManager = entityManagerFactory.createEntityManager();
    }
 
-   static EntityManager getEntityManager() {
+   public static EntityManager getEntityManager() {
       return entityManager;
    }
 }

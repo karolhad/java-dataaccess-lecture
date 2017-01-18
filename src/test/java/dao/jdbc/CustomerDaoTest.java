@@ -1,4 +1,4 @@
-package jdbc;
+package dao.jdbc;
 
 import dto.Customer;
 import org.junit.Before;

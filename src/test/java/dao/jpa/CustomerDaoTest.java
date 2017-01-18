@@ -1,5 +1,6 @@
-package jpa;
+package dao.jpa;
 
+import dao.CustomerDao;
 import dto.Customer;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,7 @@ public class CustomerDaoTest {
 
    @Before
    public void setUp() {
-      customerDao = new CustomerDao();
+      customerDao = new JPACustomerDao();
    }
 
    @Test

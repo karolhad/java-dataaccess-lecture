@@ -1,4 +1,4 @@
-package jpa;
+package dao.jpa;
 
 import dto.Customer;
 import dto.Account;

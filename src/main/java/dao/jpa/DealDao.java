@@ -1,4 +1,4 @@
-package jpa;
+package dao.jpa;
 
 import dto.Deal;
 
@@ -11,7 +11,7 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jpa.EntityManagerProvider.getEntityManager;
+import static dao.jpa.EntityManagerProvider.getEntityManager;
 
 class DealDao {
 

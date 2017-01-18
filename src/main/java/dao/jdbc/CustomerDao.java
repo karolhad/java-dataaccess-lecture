@@ -1,4 +1,4 @@
-package jdbc;
+package dao.jdbc;
 
 import dto.Customer;
 
@@ -61,7 +61,7 @@ class CustomerDao {
 
     private Connection createConnection() throws SQLException {
         return DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/bookstore",
+                "jdbc:postgresql://localhost:5432/dealing",
                 "postgres", "password1");
     }
 
