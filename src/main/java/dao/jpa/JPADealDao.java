@@ -36,7 +36,6 @@ class JPADealDao {
 
       final Root<Deal> deal = query.from(Deal.class);
 
-//      deal.join(deal.get("account"));
 
       List<Predicate> criteria = new ArrayList<>();
       if (customerLastName != null) {
