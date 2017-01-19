@@ -47,7 +47,8 @@ class CustomerDao {
 
     Integer create(String firstName, String lastName) throws SQLException {
         try (Connection connection = createConnection();
-             PreparedStatement statement = connection.prepareStatement("insert into customers(first_name, last_name) values (?, ?)", Statement.RETURN_GENERATED_KEYS)
+             PreparedStatement statement =
+                   connection.prepareStatement("insert into customers(first_name, last_name) values (?, ?)", Statement.RETURN_GENERATED_KEYS)
         ) {
             statement.setString(1, firstName);
             statement.setString(2, lastName);

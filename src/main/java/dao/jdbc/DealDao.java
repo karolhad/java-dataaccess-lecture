@@ -6,7 +6,6 @@ import dto.Customer;
 import dto.Deal;
 import dto.Instrument;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,8 +43,8 @@ class DealDao {
                      ),
                      rs.getTimestamp("open_timestamp"),
                      rs.getTimestamp("close_timestamp"),
-                     new BigDecimal(rs.getString("open_price")),
-                     new BigDecimal(rs.getString("close_price"))
+                     rs.getBigDecimal("open_price"),
+                     rs.getBigDecimal("close_price")
                ));
 
             }
