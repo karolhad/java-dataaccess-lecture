@@ -42,7 +42,7 @@ public class JpaCustomerDaoTest {
 
       print(customers);
 
-      assertThat(customers).hasSize(3);
+      assertThat(customers.size()).isGreaterThan(3);
    }
 
    @Test
@@ -77,7 +77,6 @@ public class JpaCustomerDaoTest {
          returnAllCustomers();
       }
    }
-
 
    @Test
    public void addCustomer() throws SQLException {

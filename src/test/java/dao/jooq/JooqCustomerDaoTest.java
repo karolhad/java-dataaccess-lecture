@@ -25,7 +25,7 @@ public class JooqCustomerDaoTest {
 
       print(customers);
 
-      assertThat(customers).hasSize(3);
+      assertThat(customers.size()).isGreaterThan(3);
    }
 
    @Test
