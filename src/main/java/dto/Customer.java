@@ -1,30 +1,16 @@
 package dto;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-import javax.persistence.*;
 import java.util.List;
 
-@Entity()
-@Table(name = "customers")
 public class Customer {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
 
-   @Column(name = "first_name")
    private String firstName;
-   @Column(name = "last_name")
+
    private String lastName;
 
-   @OneToMany()
-   @JoinColumn(name = "customer_id")
    private List<Account> accounts;
-
-   protected Customer() {
-   }
 
    public Customer(Integer id, String firstName, String lastName) {
       this.id = id;

@@ -1,71 +1,15 @@
 package dao.jdbc;
 
 
-import dto.Account;
-import dto.Customer;
 import dto.Deal;
-import dto.Instrument;
 
-import java.sql.*;
-import java.util.LinkedList;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static dao.jdbc.ConnectionProvider.createConnection;
 
 class JdbcDealDao {
 
    List<Deal> find(String instrumentName, String customerLastName, String accountName) throws SQLException {
-
-      try (Connection connection = createConnection();
-           PreparedStatement statement = connection.prepareStatement(prepareQuery(instrumentName, customerLastName, accountName))
-      ) {
-         setParams(statement, instrumentName, customerLastName, accountName);
-
-         try (ResultSet rs = statement.executeQuery()) {
-
-            List<Deal> results = new LinkedList<>();
-
-            while (rs.next()) {
-               results.add(new Deal(rs.getInt("deal_id"),
-                     new Account(
-                           rs.getInt("account_id"),
-                           rs.getString("account_name"),
-                           new Customer(
-                                 rs.getInt("customer_id"),
-                                 rs.getString("first_name"),
-                                 rs.getString("last_name")
-                           )
-                     ),
-                     new Instrument(
-                           rs.getInt("instrument_id"),
-                           rs.getString("instrument_name")
-                     ),
-                     rs.getTimestamp("open_timestamp"),
-                     rs.getTimestamp("close_timestamp"),
-                     rs.getBigDecimal("open_price"),
-                     rs.getBigDecimal("close_price")
-               ));
-
-            }
-            return results;
-         }
-      }
-   }
-
-   private void setParams(PreparedStatement statement, String instrumentName, String customerLastName, String accountName) throws SQLException {
-      int paramIndex = 1;
-      if (instrumentName != null) {
-         statement.setString(paramIndex++, instrumentName);
-      }
-      if (customerLastName != null) {
-         statement.setString(paramIndex++, customerLastName);
-      }
-      if (accountName != null) {
-         statement.setString(paramIndex, accountName);
-      }
+      throw new UnsupportedOperationException("Not implemented yet");
    }
 
    private String prepareQuery(String instrumentName, String customerLastName, String accountName) {
@@ -76,23 +20,7 @@ class JdbcDealDao {
             "INNER JOIN customers ON accounts.customer_id = customers.id " +
             "INNER JOIN instruments ON deals.instrument_id = instruments.id ";
 
-      List<String> whereConditions = Stream
-            .of(
-                  addParamToQuery("instruments.name", instrumentName),
-                  addParamToQuery("last_name", customerLastName),
-                  addParamToQuery("accounts.name", accountName))
-            .filter(Objects::nonNull)
-            .collect(Collectors.toList());
-
-      if (!whereConditions.isEmpty()) {
-         sql += "WHERE " + String.join(" AND ", whereConditions);
-      }
-
-      return sql + " ORDER BY deals.id";
-   }
-
-   private String addParamToQuery(String fieldName, String value) {
-      return value != null ? fieldName + "= ?" : null;
+      return sql;
    }
 
 }

@@ -20,96 +20,96 @@
          </plugin>
 
          <!-- JOOQ source generation plugin -->
-         <plugin>
-            <groupId>org.jooq</groupId>
-            <artifactId>jooq-codegen-maven</artifactId>
-            <version>3.7.4</version>
+         <!--<plugin>-->
+            <!--<groupId>org.jooq</groupId>-->
+            <!--<artifactId>jooq-codegen-maven</artifactId>-->
+            <!--<version>3.7.4</version>-->
 
-            <!-- The plugin should hook into the generate goal -->
-            <executions>
-               <execution>
-                  <goals>
-                     <goal>generate</goal>
-                  </goals>
-               </execution>
-            </executions>
+            <!--&lt;!&ndash; The plugin should hook into the generate goal &ndash;&gt;-->
+            <!--<executions>-->
+               <!--<execution>-->
+                  <!--<goals>-->
+                     <!--<goal>generate</goal>-->
+                  <!--</goals>-->
+               <!--</execution>-->
+            <!--</executions>-->
 
-            <!-- Manage the plugin's dependency. In this example, we'll use a PostgreSQL database -->
-            <dependencies>
-               <dependency>
-                  <groupId>postgresql</groupId>
-                  <artifactId>postgresql</artifactId>
-                  <version>9.1-901.jdbc4</version>
-               </dependency>
-            </dependencies>
+            <!--&lt;!&ndash; Manage the plugin's dependency. In this example, we'll use a PostgreSQL database &ndash;&gt;-->
+            <!--<dependencies>-->
+               <!--<dependency>-->
+                  <!--<groupId>postgresql</groupId>-->
+                  <!--<artifactId>postgresql</artifactId>-->
+                  <!--<version>9.1-901.jdbc4</version>-->
+               <!--</dependency>-->
+            <!--</dependencies>-->
 
-            <!-- Specify the plugin configuration.
-                 The configuration format is the same as for the standalone code generator -->
-            <configuration>
+            <!--&lt;!&ndash; Specify the plugin configuration.-->
+                 <!--The configuration format is the same as for the standalone code generator &ndash;&gt;-->
+            <!--<configuration>-->
 
-               <!-- JDBC connection parameters -->
-               <jdbc>
-                  <driver>org.postgresql.Driver</driver>
-                  <url>jdbc:postgresql:dealing</url>
-                  <user>postgres</user>
-                  <password>password1</password>
-               </jdbc>
+               <!--&lt;!&ndash; JDBC connection parameters &ndash;&gt;-->
+               <!--<jdbc>-->
+                  <!--<driver>org.postgresql.Driver</driver>-->
+                  <!--<url>jdbc:postgresql:dealing</url>-->
+                  <!--<user>postgres</user>-->
+                  <!--<password>password1</password>-->
+               <!--</jdbc>-->
 
-               <!-- Generator parameters -->
-               <generator>
-                  <database>
-                     <name>org.jooq.util.postgres.PostgresDatabase</name>
-                     <includes>.*</includes>
-                     <excludes></excludes>
-                     <inputSchema>public</inputSchema>
-                  </database>
-                  <target>
-                     <packageName>org.jooq.model</packageName>
-                     <directory>target/generated-sources/jooq</directory>
-                  </target>
-               </generator>
-            </configuration>
-         </plugin>
+               <!--&lt;!&ndash; Generator parameters &ndash;&gt;-->
+               <!--<generator>-->
+                  <!--<database>-->
+                     <!--<name>org.jooq.util.postgres.PostgresDatabase</name>-->
+                     <!--<includes>.*</includes>-->
+                     <!--<excludes></excludes>-->
+                     <!--<inputSchema>public</inputSchema>-->
+                  <!--</database>-->
+                  <!--<target>-->
+                     <!--<packageName>org.jooq.model</packageName>-->
+                     <!--<directory>target/generated-sources/jooq</directory>-->
+                  <!--</target>-->
+               <!--</generator>-->
+            <!--</configuration>-->
+         <!--</plugin>-->
 
       </plugins>
    </build>
    <dependencies>
-      <dependency>
-         <groupId>postgresql</groupId>
-         <artifactId>postgresql</artifactId>
-         <version>9.1-901.jdbc4</version>
-      </dependency>
+      <!--<dependency>-->
+         <!--<groupId>postgresql</groupId>-->
+         <!--<artifactId>postgresql</artifactId>-->
+         <!--<version>9.1-901.jdbc4</version>-->
+      <!--</dependency>-->
 
       <!-- JPA -->
-      <dependency>
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-entitymanager</artifactId>
-         <version>5.2.5.Final</version>
-      </dependency>
+      <!--<dependency>-->
+         <!--<groupId>org.hibernate</groupId>-->
+         <!--<artifactId>hibernate-entitymanager</artifactId>-->
+         <!--<version>5.2.5.Final</version>-->
+      <!--</dependency>-->
 
       <!-- JINQ -->
-      <dependency>
-         <groupId>org.jinq</groupId>
-         <artifactId>jinq-jpa</artifactId>
-         <version>1.8.15</version>
-      </dependency>
+      <!--<dependency>-->
+         <!--<groupId>org.jinq</groupId>-->
+         <!--<artifactId>jinq-jpa</artifactId>-->
+         <!--<version>1.8.15</version>-->
+      <!--</dependency>-->
 
       <!-- JOOQ -->
-      <dependency>
-         <groupId>org.jooq</groupId>
-         <artifactId>jooq</artifactId>
-         <version>3.9.0</version>
-      </dependency>
-      <dependency>
-         <groupId>org.jooq</groupId>
-         <artifactId>jooq-meta</artifactId>
-         <version>3.9.0</version>
-      </dependency>
-      <dependency>
-         <groupId>org.jooq</groupId>
-         <artifactId>jooq-codegen</artifactId>
-         <version>3.9.0</version>
-      </dependency>
+      <!--<dependency>-->
+         <!--<groupId>org.jooq</groupId>-->
+         <!--<artifactId>jooq</artifactId>-->
+         <!--<version>3.9.0</version>-->
+      <!--</dependency>-->
+      <!--<dependency>-->
+         <!--<groupId>org.jooq</groupId>-->
+         <!--<artifactId>jooq-meta</artifactId>-->
+         <!--<version>3.9.0</version>-->
+      <!--</dependency>-->
+      <!--<dependency>-->
+         <!--<groupId>org.jooq</groupId>-->
+         <!--<artifactId>jooq-codegen</artifactId>-->
+         <!--<version>3.9.0</version>-->
+      <!--</dependency>-->
 
       <dependency>
          <groupId>org.slf4j</groupId>
