@@ -29,13 +29,17 @@ class JdbcCustomerDao implements CustomerDao {
    @Override
    public Customer get(Integer id) throws SQLException {
       try (Connection connection = createConnection();
-           Statement statement = connection.createStatement();
-           ResultSet resultSet = statement.executeQuery("select * from customers where id=?")
+           PreparedStatement statement= connection.prepareStatement("select * from customers where id=?");
+
       ) {
-         if (resultSet.next()) {
-            return mapToCustomer(resultSet);
+         statement.setInt(1, id);
+
+         try (ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+               return mapToCustomer(resultSet);
+            }
+            return null;
          }
-         return null;
       }
    }
 

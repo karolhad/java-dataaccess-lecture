@@ -19,6 +19,13 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
+   public void getCustomerById() throws SQLException {
+      Customer customer = customerDao.get(1001);
+
+      assertThat(customer).isNotNull();
+   }
+
+   @Test
    public void returnAllCustomers() throws SQLException {
       List<Customer> customers = customerDao.findAll();
 
