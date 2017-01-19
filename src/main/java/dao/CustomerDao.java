@@ -9,9 +9,9 @@ public interface CustomerDao {
 
    List<Customer> findAll() throws SQLException;
 
-   Customer get(Integer id);
+   Customer get(Integer id) throws SQLException;
 
-   List<Customer> findByFirstName(String firstName);
+   List<Customer> findByFirstName(String firstName) throws SQLException;
 
-   Integer create(String firstName, String lastName);
+   Integer create(String firstName, String lastName) throws SQLException;
 }

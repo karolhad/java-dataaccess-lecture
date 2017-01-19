@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import static dao.jdbc.ConnectionProvider.createConnection;
+
 class CustomerDao {
 
     List<Customer> findAll() throws SQLException {
@@ -58,13 +60,6 @@ class CustomerDao {
             throw new IllegalStateException("Object not inserted");
         }
     }
-
-    private Connection createConnection() throws SQLException {
-        return DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/dealing",
-                "postgres", "password1");
-    }
-
 
 
 }
