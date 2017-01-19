@@ -1,22 +1,39 @@
-package dao.jinq;
+package dao.jpa;
 
 import dao.CustomerDao;
 import dto.Customer;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.sql.SQLException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CustomerDaoTest {
+public class JpaCustomerDaoTest {
 
    private CustomerDao customerDao;
 
+   private EntityManager entityManager;
+
+   private EntityManagerFactory entityManagerFactory;
+
    @Before
    public void setUp() {
-      customerDao = new JINQCustomerDao();
+      entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
+      entityManager = entityManagerFactory.createEntityManager();
+
+      customerDao = new JpaCustomerDao(entityManager);
+   }
+
+   @After
+   public void tearDown() {
+      entityManager.close();
+      entityManagerFactory.close();
    }
 
    @Test

@@ -1,22 +1,37 @@
-package dao.jpa;
+package dao.jinq;
 
 import dao.CustomerDao;
 import dto.Customer;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.sql.SQLException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CustomerDaoTest {
+public class JinqCustomerDaoTest {
 
    private CustomerDao customerDao;
+   private EntityManagerFactory entityManagerFactory;
+   private EntityManager entityManager;
 
    @Before
    public void setUp() {
-      customerDao = new JPACustomerDao();
+      entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
+      entityManager = entityManagerFactory.createEntityManager();
+
+      customerDao = new JinqCustomerDao(entityManager);
+   }
+
+   @After
+   public void tearDown() {
+      entityManager.close();
+      entityManagerFactory.close();
    }
 
    @Test
@@ -61,14 +76,12 @@ public class CustomerDaoTest {
       }
    }
 
-
    @Test
    public void addCustomer() throws SQLException {
       Integer id = customerDao.create("Jan", "Kowalski");
 
       assertThat(id).isNotNull();
    }
-
 
    private void print(List<Customer> allCustomers) {
       allCustomers.forEach(System.out::println);

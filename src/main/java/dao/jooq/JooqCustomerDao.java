@@ -8,11 +8,11 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static dao.jdbc.ConnectionProvider.createConnection;
 import static org.jooq.model.Tables.CUSTOMERS;
 
 public class JooqCustomerDao implements CustomerDao {
@@ -83,7 +83,4 @@ public class JooqCustomerDao implements CustomerDao {
       return new Customer(row.get(CUSTOMERS.FIRST_NAME), row.get(CUSTOMERS.LAST_NAME));
    }
 
-   private Connection createConnection() throws SQLException {
-      return DriverManager.getConnection("jdbc:postgresql://localhost:5432/dealing", "postgres", "password1");
-   }
 }

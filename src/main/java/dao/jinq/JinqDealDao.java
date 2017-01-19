@@ -12,12 +12,12 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class JINQDealDao implements DealDao {
+class JinqDealDao implements DealDao {
 
    private final EntityManager em;
    private final JinqJPAStreamProvider streams;
 
-   public JINQDealDao(EntityManager entityManager) {
+   JinqDealDao(EntityManager entityManager) {
       this.em = entityManager;
       this.streams = new JinqJPAStreamProvider(entityManager.getMetamodel());
    }
@@ -25,13 +25,12 @@ public class JINQDealDao implements DealDao {
    @Override
    public List<Deal> find(String instrumentName, String customerLastName, String accountName) {
 
-      String instrumentNameLowerCase = instrumentName != null ? instrumentName.toLowerCase() : instrumentName;
+      String instrumentNameLowerCase = instrumentName != null ? instrumentName.toLowerCase() : null;
 //      return deals().where(deal ->
 //            (instrumentNameLowerCase == null || deal.getInstrument().getName().toLowerCase().equals(instrumentNameLowerCase))
 //                  && (customerLastName == null || customerLastName.equals(deal.getAccount().getCustomer().getLastName()))
 //                  && (accountName == null || deal.getAccount().getName().equals(accountName))
 //      ).collect(Collectors.toList());
-
 
       JPAJinqStream<Deal> deals = deals();
 

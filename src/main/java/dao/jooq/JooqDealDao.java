@@ -103,8 +103,7 @@ public class JooqDealDao implements DealDao {
    }
 
    private DSLContext dsl(Connection connection) {
-      return DSL
-            .using(connection);
+      return DSL.using(connection);
    }
 
    private Deal map(Record row) {
