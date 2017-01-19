@@ -45,7 +45,6 @@ public class Customer {
             "id=" + id +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
-            ", accounts=" + accounts +
             '}';
    }
 }

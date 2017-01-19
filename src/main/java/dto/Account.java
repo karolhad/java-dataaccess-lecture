@@ -26,4 +26,12 @@ public class Account {
       return customer;
    }
 
+   @Override
+   public String toString() {
+      return "Account{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", customer=" + customer +
+            '}';
+   }
 }
