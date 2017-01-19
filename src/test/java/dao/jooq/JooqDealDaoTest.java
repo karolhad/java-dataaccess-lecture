@@ -24,7 +24,7 @@ public class JooqDealDaoTest {
 
 
    @Test
-   public void all_deals() throws SQLException {
+   public void allDeals() throws SQLException {
       final List<Deal> deals = dealDao.find(null, null, null);
 
       assertThat(deals).hasSize(17);

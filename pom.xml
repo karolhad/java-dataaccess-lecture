@@ -81,35 +81,35 @@
       <!--</dependency>-->
 
       <!-- JPA -->
-      <!--<dependency>-->
-         <!--<groupId>org.hibernate</groupId>-->
-         <!--<artifactId>hibernate-entitymanager</artifactId>-->
-         <!--<version>5.2.5.Final</version>-->
-      <!--</dependency>-->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-entitymanager</artifactId>
+         <version>5.2.5.Final</version>
+      </dependency>
 
       <!-- JINQ -->
-      <!--<dependency>-->
-         <!--<groupId>org.jinq</groupId>-->
-         <!--<artifactId>jinq-jpa</artifactId>-->
-         <!--<version>1.8.15</version>-->
-      <!--</dependency>-->
+      <dependency>
+         <groupId>org.jinq</groupId>
+         <artifactId>jinq-jpa</artifactId>
+         <version>1.8.15</version>
+      </dependency>
 
       <!-- JOOQ -->
-      <!--<dependency>-->
-         <!--<groupId>org.jooq</groupId>-->
-         <!--<artifactId>jooq</artifactId>-->
-         <!--<version>3.9.0</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-         <!--<groupId>org.jooq</groupId>-->
-         <!--<artifactId>jooq-meta</artifactId>-->
-         <!--<version>3.9.0</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-         <!--<groupId>org.jooq</groupId>-->
-         <!--<artifactId>jooq-codegen</artifactId>-->
-         <!--<version>3.9.0</version>-->
-      <!--</dependency>-->
+      <dependency>
+         <groupId>org.jooq</groupId>
+         <artifactId>jooq</artifactId>
+         <version>3.9.0</version>
+      </dependency>
+      <dependency>
+         <groupId>org.jooq</groupId>
+         <artifactId>jooq-meta</artifactId>
+         <version>3.9.0</version>
+      </dependency>
+      <dependency>
+         <groupId>org.jooq</groupId>
+         <artifactId>jooq-codegen</artifactId>
+         <version>3.9.0</version>
+      </dependency>
 
       <dependency>
          <groupId>org.slf4j</groupId>

@@ -19,7 +19,7 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
-   public void returnAllCustomers() throws SQLException {
+   public void allCustomers() throws SQLException {
       List<Customer> customers = customerDao.findAll();
 
       print(customers);
@@ -37,7 +37,7 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
-   public void customersWithFirstSqlInjection() throws SQLException {
+   public void sqlInjection() throws SQLException {
       List<Customer> customers = customerDao.findByFirstName("James'; DELETE FROM customers; --'");
 
       print(customers);
@@ -46,15 +46,15 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
-   public void returnAllCustomersManyTimes() throws SQLException {
+   public void allCustomersManyTimes() throws SQLException {
       for (int i = 0; i < 100; i++) {
-         returnAllCustomers();
+         allCustomers();
       }
    }
 
 
    @Test
-   public void addCustomer() throws SQLException {
+   public void add_customer() throws SQLException {
       Integer id = customerDao.create("Jan", "Kowalski");
 
       assertThat(id).isNotNull();
