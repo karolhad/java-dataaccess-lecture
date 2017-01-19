@@ -54,7 +54,7 @@ public class JinqCustomerDao implements CustomerDao {
 
    @Override
    public Integer create(String firstName, String lastName) {
-      return null;
+      throw new UnsupportedOperationException("Not implemented yet");
    }
 
    private JPAJinqStream<Customer> streamCustomer() {

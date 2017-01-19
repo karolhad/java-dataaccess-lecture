@@ -58,7 +58,7 @@ public class JinqDealDaoTest {
    public void findBestDeal() throws SQLException {
       final BigDecimal deals = dealDao.findBestDeal();
 
-      assertThat(deals).isEqualTo(new BigDecimal("3.26"));
+      assertThat(deals).isEqualTo(new BigDecimal("9.19"));
    }
 
    @Test

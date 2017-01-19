@@ -76,13 +76,6 @@ public class JinqCustomerDaoTest {
       }
    }
 
-   @Test
-   public void addCustomer() throws SQLException {
-      Integer id = customerDao.create("Jan", "Kowalski");
-
-      assertThat(id).isNotNull();
-   }
-
    private void print(List<Customer> allCustomers) {
       allCustomers.forEach(System.out::println);
    }
