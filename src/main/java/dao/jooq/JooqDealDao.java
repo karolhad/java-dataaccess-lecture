@@ -60,6 +60,22 @@ public class JooqDealDao implements DealDao {
       }
    }
 
+   public Result<Record2<String, BigDecimal>> customerTradeBestReport() throws SQLException {
+
+      try (Connection connection = createConnection()) {
+         return dsl(connection)
+               .select(CUSTOMERS.LAST_NAME, max(DEALS.CLOSE_PRICE
+                     .sub(DEALS.OPEN_PRICE)
+               ).as("Best trade"))
+               .from(DEALS, ACCOUNTS, CUSTOMERS)
+               .where(DEALS.ACCOUNT_ID.eq(ACCOUNTS.ID))
+               .and(ACCOUNTS.CUSTOMER_ID.eq(CUSTOMERS.ID))
+               .groupBy(CUSTOMERS.LAST_NAME)
+               .orderBy(CUSTOMERS.LAST_NAME)
+               .fetch();
+      }
+   }
+
    public Result<Record> totalBalanceReport() throws SQLException {
       try (Connection connection = createConnection()) {
          return dsl(connection)
@@ -82,22 +98,6 @@ public class JooqDealDao implements DealDao {
                .from(DEALS)
                .where(DEALS.ACCOUNT_ID.eq(113))
                .orderBy(DEALS.OPEN_TIMESTAMP, DEALS.ID)
-               .fetch();
-      }
-   }
-
-   public Result<Record2<String, BigDecimal>> customerTradeBestReport() throws SQLException {
-
-      try (Connection connection = createConnection()) {
-         return dsl(connection)
-               .select(CUSTOMERS.LAST_NAME, max(DEALS.CLOSE_PRICE
-                     .sub(DEALS.OPEN_PRICE)
-                     ).as("Best trade"))
-               .from(DEALS, ACCOUNTS, CUSTOMERS)
-               .where(DEALS.ACCOUNT_ID.eq(ACCOUNTS.ID))
-               .and(ACCOUNTS.CUSTOMER_ID.eq(CUSTOMERS.ID))
-               .groupBy(CUSTOMERS.LAST_NAME)
-               .orderBy(CUSTOMERS.LAST_NAME)
                .fetch();
       }
    }

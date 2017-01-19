@@ -15,13 +15,9 @@ public class Deal {
    private Integer id;
 
    @ManyToOne()
-   @JoinColumn(name = "account_id", insertable = false, updatable = false)
-   @Fetch(FetchMode.JOIN)
    private Account account;
 
    @ManyToOne()
-   @JoinColumn(name = "instrument_id", insertable = false, updatable = false)
-   @Fetch(FetchMode.JOIN)
    private Instrument instrument;
 
    @Column(name = "open_timestamp")

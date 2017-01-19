@@ -1,7 +1,6 @@
 package dto;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -36,4 +35,11 @@ public class Account {
       return customer;
    }
 
+   @Override
+   public String toString() {
+      return "Account{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            '}';
+   }
 }

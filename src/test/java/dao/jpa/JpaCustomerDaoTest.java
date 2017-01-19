@@ -39,7 +39,6 @@ public class JpaCustomerDaoTest {
    @Test
    public void returnAllCustomers() throws SQLException {
       List<Customer> customers = customerDao.findAll();
-
       print(customers);
 
       assertThat(customers.size()).isGreaterThan(3);
@@ -49,7 +48,7 @@ public class JpaCustomerDaoTest {
    public void customersWithFirstNameJames() throws SQLException {
       List<Customer> customers = customerDao.findByFirstName("James");
 
-      print(customers);
+//      print(customers);
 
       assertThat(customers).hasSize(1);
    }
@@ -58,17 +57,19 @@ public class JpaCustomerDaoTest {
    public void customersWithFirstSqlInjection() throws SQLException {
       List<Customer> customers = customerDao.findByFirstName("James'; DELETE FROM customers; --'");
 
-      print(customers);
+//      print(customers);
 
       assertThat(customers).hasSize(0);
    }
 
    @Test
    public void customerById() throws SQLException {
-      Customer customer = customerDao.get(1001);
+      Customer customer = customerDao.get(1002);
+//      entityManager.close();
+      assertThat(customer.getLastName()).isEqualTo("Brown");
+      assertThat(customer.getFirstName()).isEqualTo("Richard");
 
-      assertThat(customer.getLastName()).isEqualTo("Williams");
-      assertThat(customer.getFirstName()).isEqualTo("James");
+      customer.getAccounts().forEach(System.out::println);
    }
 
    @Test

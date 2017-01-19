@@ -3,9 +3,6 @@
    <persistence-unit name="persistence" transaction-type="RESOURCE_LOCAL">
 
       <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-      <class>dto.Customer</class>
-      <class>dto.Deal</class>
-
 
       <properties>
          <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

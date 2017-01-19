@@ -12,7 +12,8 @@ CREATE TABLE "accounts" (
 	"id" SERIAL NOT NULL,
 	"name" text NOT NULL,
 	"customer_id" integer,
-	Constraint "accounts_id_pkey" Primary Key ("id")
+	Constraint "accounts_id_pkey" Primary Key ("id"),
+  FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
 
 CREATE TABLE "instruments" (
@@ -28,7 +29,10 @@ CREATE TABLE "deals" (
   "open_timestamp" timestamp with time zone NOT NULL,
   "close_timestamp" timestamp with time zone NOT NULL,
   "open_price" numeric(5,2) NOT NULL,
-  "close_price" numeric(5,2)
+  "close_price" numeric(5,2),
+  Constraint "deals_id_pkey" Primary Key ("id"),
+  FOREIGN KEY (account_id) REFERENCES accounts(id),
+  FOREIGN KEY (instrument_id) REFERENCES instruments(id)
 );
 
 
