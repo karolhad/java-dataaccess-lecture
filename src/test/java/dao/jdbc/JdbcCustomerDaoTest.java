@@ -9,13 +9,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CustomerDaoTest {
+public class JdbcCustomerDaoTest {
 
-   private CustomerDao customerDao;
+   private JdbcCustomerDao customerDao;
 
    @Before
    public void setUp() {
-      customerDao = new CustomerDao();
+      customerDao = new JdbcCustomerDao();
    }
 
    @Test

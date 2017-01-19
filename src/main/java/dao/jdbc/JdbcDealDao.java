@@ -13,7 +13,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class DealDao {
+import static dao.jdbc.ConnectionProvider.createConnection;
+
+class JdbcDealDao {
 
    List<Deal> find(String instrumentName, String customerLastName, String accountName) throws SQLException {
 
@@ -74,11 +76,13 @@ class DealDao {
             "INNER JOIN customers ON accounts.customer_id = customers.id " +
             "INNER JOIN instruments ON deals.instrument_id = instruments.id ";
 
-      List<String> whereConditions = Stream.of(
-            addParamToQuery("instruments.name", instrumentName),
-            addParamToQuery("last_name", customerLastName),
-            addParamToQuery("accounts.name", accountName)).
-            filter(Objects::nonNull).collect(Collectors.toList());
+      List<String> whereConditions = Stream
+            .of(
+                  addParamToQuery("instruments.name", instrumentName),
+                  addParamToQuery("last_name", customerLastName),
+                  addParamToQuery("accounts.name", accountName))
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
 
       if (!whereConditions.isEmpty()) {
          sql += "WHERE " + String.join(" AND ", whereConditions);
@@ -91,9 +95,4 @@ class DealDao {
       return value != null ? fieldName + "= ?" : null;
    }
 
-   private Connection createConnection() throws SQLException {
-      return DriverManager.getConnection(
-            "jdbc:postgresql://localhost:5432/dealing",
-            "postgres", "password1");
-   }
 }
