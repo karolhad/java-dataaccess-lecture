@@ -52,7 +52,7 @@ public class JpaDealDaoTest {
 
    @Test
    public void williamsDeals() throws SQLException {
-      final List<Deal> deals = dealDao.find("Williams");
+      final List<Deal> deals = dealDao.find(null, "Williams", null);
 
       assertThat(deals).hasSize(3);
 

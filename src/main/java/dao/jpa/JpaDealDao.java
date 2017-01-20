@@ -14,10 +14,6 @@ class JpaDealDao implements DealDao {
       this.entityManager = entityManager;
    }
 
-   public List<Deal> find(String customerLastName) {
-      throw new UnsupportedOperationException("Not implemented yet");
-   }
-
    @Override
    public List<Deal> find(String instrumentName, String customerLastName, String accountName) {
       throw new UnsupportedOperationException("Not implemented yet");

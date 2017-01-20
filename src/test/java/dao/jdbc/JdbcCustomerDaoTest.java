@@ -19,12 +19,23 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
+   public void getConsumerById() throws SQLException {
+      Customer consumer = customerDao.get(1001);
+
+      assertThat(consumer).isNotNull();
+
+      System.out.println(consumer);
+   }
+
+   @Test
    public void allCustomers() throws SQLException {
       List<Customer> customers = customerDao.findAll();
 
+      assertThat(customers).isNotNull();
+
       print(customers);
 
-      assertThat(customers.size()).isGreaterThan(3);
+      assertThat(customers.size()).isGreaterThanOrEqualTo(3);
    }
 
    @Test
@@ -47,14 +58,14 @@ public class JdbcCustomerDaoTest {
 
    @Test
    public void allCustomersManyTimes() throws SQLException {
-      for (int i = 0; i < 100; i++) {
+      for (int i = 0; i < 200; i++) {
          allCustomers();
       }
    }
 
 
    @Test
-   public void add_customer() throws SQLException {
+   public void addCustomer() throws SQLException {
       Integer id = customerDao.create("Jan", "Kowalski");
 
       assertThat(id).isNotNull();

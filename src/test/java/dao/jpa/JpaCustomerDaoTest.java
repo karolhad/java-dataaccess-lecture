@@ -32,7 +32,9 @@ public class JpaCustomerDaoTest {
 
    @After
    public void tearDown() {
-      entityManager.close();
+      if (entityManager.isOpen()) {
+         entityManager.close();
+      }
       entityManagerFactory.close();
    }
 
@@ -42,7 +44,7 @@ public class JpaCustomerDaoTest {
 
       print(customers);
 
-      assertThat(customers.size()).isGreaterThan(3);
+      assertThat(customers.size()).isGreaterThanOrEqualTo(3);
    }
 
    @Test
@@ -69,6 +71,10 @@ public class JpaCustomerDaoTest {
 
       assertThat(customer.getLastName()).isEqualTo("Williams");
       assertThat(customer.getFirstName()).isEqualTo("James");
+
+//      entityManager.close();
+
+      assertThat(customer.getAccounts().size()).isEqualTo(1);
    }
 
    @Test
