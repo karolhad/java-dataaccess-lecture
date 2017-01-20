@@ -32,16 +32,19 @@ public class JpaCustomerDaoTest {
 
    @After
    public void tearDown() {
-      entityManager.close();
+      if (entityManager.isOpen()) {
+         entityManager.close();
+      }
       entityManagerFactory.close();
    }
 
    @Test
    public void returnAllCustomers() throws SQLException {
       List<Customer> customers = customerDao.findAll();
+
       print(customers);
 
-      assertThat(customers.size()).isGreaterThan(3);
+      assertThat(customers.size()).isGreaterThanOrEqualTo(3);
    }
 
    @Test

@@ -26,12 +26,14 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
-   public void returnAllCustomers() throws SQLException {
+   public void allCustomers() throws SQLException {
       List<Customer> customers = customerDao.findAll();
+
+      assertThat(customers).isNotNull();
 
       print(customers);
 
-      assertThat(customers.size()).isGreaterThan(3);
+      assertThat(customers.size()).isGreaterThanOrEqualTo(3);
    }
 
    @Test
@@ -44,7 +46,7 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
-   public void customersWithFirstSqlInjection() throws SQLException {
+   public void sqlInjection() throws SQLException {
       List<Customer> customers = customerDao.findByFirstName("James'; DELETE FROM customers; --'");
 
       print(customers);
@@ -53,9 +55,9 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
-   public void returnAllCustomersManyTimes() throws SQLException {
-      for (int i = 0; i < 100; i++) {
-         returnAllCustomers();
+   public void allCustomersManyTimes() throws SQLException {
+      for (int i = 0; i < 200; i++) {
+         allCustomers();
       }
    }
 

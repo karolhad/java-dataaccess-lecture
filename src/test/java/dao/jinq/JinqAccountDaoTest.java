@@ -33,7 +33,7 @@ public class JinqAccountDaoTest {
    }
 
    @Test
-   public void getAccountsForCustomerWithLastName() {
+   public void accountsForCustomerWithLastName() {
       final List<Account> accounts = accountDao.findAccountsForCustomerLastName("King");
 
       assertThat(accounts).isNotNull();

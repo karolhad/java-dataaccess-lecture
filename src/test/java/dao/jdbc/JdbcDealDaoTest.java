@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class JdbcDealDaoTest {
 
    @Test
-   public void all_deals() throws SQLException {
+   public void allDeals() throws SQLException {
       JdbcDealDao dealDao = new JdbcDealDao();
       final List<Deal> deals = dealDao.find(null, null, null);
 
@@ -22,7 +22,7 @@ public class JdbcDealDaoTest {
    }
 
    @Test
-   public void williams_deals() throws SQLException {
+   public void williamsDeals() throws SQLException {
       JdbcDealDao dealDao = new JdbcDealDao();
       final List<Deal> deals = dealDao.find(null, "Williams", null);
 

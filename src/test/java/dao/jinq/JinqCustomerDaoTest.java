@@ -35,7 +35,7 @@ public class JinqCustomerDaoTest {
    }
 
    @Test
-   public void returnAllCustomers() throws SQLException {
+   public void allCustomers() throws SQLException {
       List<Customer> customers = customerDao.findAll();
 
       print(customers);
@@ -70,9 +70,9 @@ public class JinqCustomerDaoTest {
    }
 
    @Test
-   public void returnAllCustomersManyTimes() throws SQLException {
+   public void allCustomersManyTimes() throws SQLException {
       for (int i = 0; i < 100; i++) {
-         returnAllCustomers();
+         allCustomers();
       }
    }
 

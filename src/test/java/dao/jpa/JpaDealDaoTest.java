@@ -37,22 +37,22 @@ public class JpaDealDaoTest {
    }
 
    @Test
-   public void get_deal() {
+   public void getDeal() {
       final Deal deal = dealDao.get(10001);
 
       assertThat(deal).isNotNull();
    }
 
    @Test
-   public void all_deals() throws SQLException {
+   public void allDeals() throws SQLException {
       final List<Deal> deals = dealDao.find(null, null, null);
 
       assertThat(deals).hasSize(17);
    }
 
    @Test
-   public void williams_deals() throws SQLException {
-      final List<Deal> deals = dealDao.find("Williams");
+   public void williamsDeals() throws SQLException {
+      final List<Deal> deals = dealDao.find(null, "Williams", null);
 
       assertThat(deals).hasSize(3);
 
