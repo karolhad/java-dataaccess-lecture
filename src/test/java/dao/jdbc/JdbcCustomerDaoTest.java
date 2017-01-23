@@ -19,12 +19,10 @@ public class JdbcCustomerDaoTest {
    }
 
    @Test
-   public void getConsumerById() throws SQLException {
-      Customer consumer = customerDao.get(1001);
+   public void getCustomerById() throws SQLException {
+      Customer customer = customerDao.get(1001);
 
-      assertThat(consumer).isNotNull();
-
-      System.out.println(consumer);
+      assertThat(customer).isNotNull();
    }
 
    @Test
@@ -44,7 +42,7 @@ public class JdbcCustomerDaoTest {
 
       print(customers);
 
-      assertThat(customers).hasSize(1);
+      assertThat(customers).hasSize(2);
    }
 
    @Test

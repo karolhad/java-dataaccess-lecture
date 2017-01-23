@@ -53,7 +53,7 @@ public class JpaCustomerDaoTest {
 
       print(customers);
 
-      assertThat(customers).hasSize(1);
+      assertThat(customers).hasSize(2);
    }
 
    @Test
@@ -67,14 +67,13 @@ public class JpaCustomerDaoTest {
 
    @Test
    public void customerById() throws SQLException {
-      Customer customer = customerDao.get(1001);
+      Customer customer = customerDao.get(1002);
+//      entityManager.close();
+      assertThat(customer.getLastName()).isEqualTo("Brown");
+      assertThat(customer.getFirstName()).isEqualTo("Richard");
 
       assertThat(customer.getLastName()).isEqualTo("Williams");
       assertThat(customer.getFirstName()).isEqualTo("James");
-
-//      entityManager.close();
-
-      assertThat(customer.getAccounts().size()).isEqualTo(1);
    }
 
    @Test
