@@ -1,4 +1,4 @@
-# JDBC JPA JOOQ JINQ examples
+# Java data access examples used in JDBC, JPA, JINQ & JOOQ lecture
 
 A few examples how to access a database from java using JDB, JPA, JINQ and JOOQ. 
 
