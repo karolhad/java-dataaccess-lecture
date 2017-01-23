@@ -5,6 +5,7 @@ CREATE TABLE "customers" (
   "id" SERIAL NOT NULL,
   "last_name" text,
   "first_name" text,
+  "picture" bytea,
   Constraint "customers_pkey" Primary Key ("id")
 );
 
@@ -31,11 +32,29 @@ CREATE TABLE "deals" (
   "close_price" numeric(5,2)
 );
 
+create or replace function bytea_import(p_path text, p_result out bytea)
+                   language plpgsql as $$
+declare
+  l_oid oid;
+  r record;
+begin
+  p_result := '';
+  select lo_import(p_path) into l_oid;
+  for r in ( select data
+             from pg_largeobject
+             where loid = l_oid
+             order by pageno ) loop
+    p_result = p_result || r.data;
+  end loop;
+  perform lo_unlink(l_oid);
+end;$$;
 
 COPY "customers"  FROM stdin;
-1001	Williams	James
-1002	Brown	Richard
-1003	King	Jenny
+1001	Williams	James	NULL
+1002	Brown	Richard	NULL
+1003	King	Jenny	NULL
+1004	Bond	James	NULL
+1005	Bond	Larry	NULL
 \.
 
 COPY "accounts"  FROM stdin;
@@ -76,5 +95,5 @@ COPY "deals"  FROM stdin;
 10017	99	11	2016-08-05 09:29:21-07	2016-08-05 10:24:21-07	10.12	13.38
 \.
 
-
+update customers SET picture = bytea_import('/docker-entrypoint-initdb.d/picture.png') where id = 1001;
 VACUUM FULL ANALYZE;
