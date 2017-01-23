@@ -53,7 +53,7 @@ public class JpaCustomerDaoTest {
 
 //      print(customers);
 
-      assertThat(customers).hasSize(1);
+      assertThat(customers).hasSize(2);
    }
 
    @Test
